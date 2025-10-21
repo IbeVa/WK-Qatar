@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ListTeamView: View {
-    var teams : [WKResult]
-    @State var selectedTeam : String?
+    var teams : [String]
+    @Binding var selectedTeam : String?
     var body: some View {
-        List(teams, id: \.self, selection: $selectedTeam) { team in
-            Text(team.)
+        Text("WK QATAR 2020").frame(maxWidth: .infinity, alignment: .center).padding(20).bold(true).font(Font.largeTitle)
+        Text("Select your favorite team")
+        List(teams, id:  \.self, selection: $selectedTeam) { team in
+            Text(team).foregroundStyle(selectedTeam == team ? .red : .black)
         }
     }
 }
+
 

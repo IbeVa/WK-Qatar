@@ -9,8 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(DataStore.self) var dataStore
+    @State private var selectedTeam : String?
     var body: some View {
-        
+        NavigationStack{
+            ListTeamView(teams: dataStore.getAllTeams(), selectedTeam: $selectedTeam)
+            
+            if let selectedTeam = selectedTeam{
+                NavigationLink("Next") {
+                        TeamMatchView(selectedTeam: selectedTeam)
+                }
+            }
+        }
     }
 }
 
