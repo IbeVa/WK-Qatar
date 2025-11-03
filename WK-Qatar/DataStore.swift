@@ -11,6 +11,17 @@ import Foundation
 class DataStore {
     var results : [WKResult]
     
+    var selectedMatch: WKResult?
+    private var _selectedStadium: String?
+    var selectedStadium: String?{
+        get {
+            return _selectedStadium
+        }set{
+            selectedMatch = nil
+            _selectedStadium = newValue
+        }
+    }
+    
     init() {
         results = load("WKResultsQatar.json")
     }
